@@ -1,0 +1,93 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif; 
+}
+
+body {
+    background-color: #f4f4f4; 
+    color: #333;
+}
+
+/* Estilo header */
+.main-header {
+    background-color: #E70000;
+    color: white;
+    padding: 10px 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.logo-container .logo {
+    height: 50px;
+}
+
+/* Estilos de la Navegación */
+.main-nav ul {
+    list-style: none;
+    display: flex;
+}
+
+.main-nav ul li a {
+    color: white;
+    text-decoration: none;
+    padding: 0 15px;
+    font-weight: 700;
+    transition: color 0.3s;
+}
+
+.main-nav ul li a:hover {
+    color: #FFC0CB;
+}
+
+/* Estilos de Acciones (Usuario/Carrito) */
+.header-actions a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.5em;
+    margin-left: 20px;
+    transition: color 0.3s;
+}
+
+.header-actions a:hover {
+    color: #FFC0CB;
+}
+
+/*Estilo body*/
+main {
+    padding: 20px 5%;
+    min-height: 80vh;
+}
+
+h1 {
+    color: #A30000;
+    margin-bottom: 20px;
+}
+
+/*Estilo footer*/
+.main-footer {
+    background-color: #333;
+    color: white;
+    padding: 20px 5%;
+    text-align: center;
+    width: 100%;
+    margin-top: 30px;
+}
+
+.footer-content p {
+    margin-bottom: 10px;
+}
+
+.footer-content a {
+    color: #FFC0CB;
+    text-decoration: none;
+    margin: 0 5px;
+}
+
+.footer-content a:hover {
+    text-decoration: underline;
+}
