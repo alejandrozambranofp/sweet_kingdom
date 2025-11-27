@@ -33,6 +33,7 @@
                     <img class="header-user-icon" src="/paginaWeb_projecte_ZambranoAlejandro/assets/imagenes/icono_usuario.png"
                         alt="icono usuario">
                 </a>
+                <p>Aqui ira el carrito</p>
                 </div>
             </nav>
         </div>
