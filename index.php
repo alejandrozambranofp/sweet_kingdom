@@ -1,11 +1,8 @@
 <?php
-include 'includes/header.php'; 
-?>
+require_once 'app/controllers/ControladorProducto.php';
 
-<main>
-    
-</main>
+$controlador = new ControladorProducto();
 
-<?php
-include 'includes/footer.php'; 
+$controlador->index();
+
 ?>

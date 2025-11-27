@@ -1,6 +1,18 @@
 <?php
-include 'includes/db_connection.php';
+require_once 'app/models/BaseDeDatos.php';
 
-echo "<h1>¡Conexión Exitosa!</h1>";
-echo "<p>La base de datos sweet_kingdom está conectada y lista para usarse.</p>";
+echo "<h1>Test de Conexión a la Base de Datos</h1>";
+
+try {
+    $conn = BaseDeDatos::obtenerConexion();
+    
+    echo "<p style='color: green; font-weight: bold;'>ÉXITO: Conexión establecida correctamente con la base de datos 'sweet_kingdom'.</p>";
+    
+    echo "<p>Versión del servidor: " . $conn->getAttribute(PDO::ATTR_SERVER_VERSION) . "</p>";
+
+} catch (Exception $e) {
+    echo "<p style='color: red; font-weight: bold;'>ERROR: Falló la conexión.</p>";
+    echo "<p>Detalle del error: " . $e->getMessage() . "</p>";
+}
+
 ?>

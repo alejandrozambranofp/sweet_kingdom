@@ -1,9 +1,3 @@
-<?php
-
-session_start();
-
-include 'db_connection.php'; 
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,8 +6,10 @@ include 'db_connection.php';
     <title>Document</title>
 </head>
 <body>
-    <header>
-        
-    </header>
+    <?php
+        include 'header.php';
+        include $view; 
+        include 'footer.php'; 
+    ?>
 </body>
 </html>
