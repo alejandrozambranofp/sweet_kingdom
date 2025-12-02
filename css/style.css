@@ -13,7 +13,6 @@ header {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: #E70000;
     width: 100%;
 }
 
@@ -23,6 +22,7 @@ header {
     justify-content: space-between;
     align-items: center;
     width: 100%;
+    background-color: #E70000;
 }
 
 .header-logo {
@@ -30,9 +30,6 @@ header {
     height: auto;
 }
 
-.header-user-icon {
-    width: 40px;
-}
 .navbar {
     padding: 0;
 }
@@ -44,7 +41,11 @@ header {
 }
 .buscador{
     text-align: center;
+    border: 2px solid lightgray;
+    border-radius: 5px;
     margin: 20px;
+    width: 700px;
+    background-color: white;
 }
 .form-control{
     border: transparent;
@@ -52,10 +53,7 @@ header {
 }
 
 .container-fluid{
-    background-color: white;
-    border: 2px solid lightgray;
-    border-radius: 5px;
-    width: 700px;
+    width: 100%;
     padding: 0;
 }
 .input-group {
@@ -70,6 +68,48 @@ header {
 
 .logo_carrito{
     margin: 20px;
+    width: 100px;
 }
 
+.logo_carrito a{
+    text-decoration: none;
+    color: inherit;
+}
 
+.header_bottom{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    flex-direction: row;
+    background-color: #E70000;
+    width: 100%;
+}
+
+.header_bottom a{
+    text-decoration: none;
+    color: white;
+}
+
+.info{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap:60px;
+}
+
+.entrega{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+}
+
+.entrega p{
+    margin: 0;
+}
+.camion_entrega{
+    margin: 20px;
+    width: 20px;
+    margin: 0;
+}
