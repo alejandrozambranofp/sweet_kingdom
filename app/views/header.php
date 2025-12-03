@@ -74,13 +74,16 @@
             <div class="entrega">
                 <img class="camion_entrega" src="/paginaWeb_projecte_ZambranoAlejandro/assets/imagenes/icono_regalo.png"
                     alt="camion entrega">
-                <p>Entrega gratuita a partir de 20€</p>
+                <p>Todas tus franquicias favoritas en postres</p>
             </div>
             <div class="entrega">
-                <img class="camion_entrega" src="/paginaWeb_projecte_ZambranoAlejandro/assets/imagenes/ucono_exclusivo.png"
+                <img class="camion_entrega" src="/paginaWeb_projecte_ZambranoAlejandro/assets/imagenes/icono_exclusivo.png"
                     alt="camion entrega">
-                <p>Entrega gratuita a partir de 20€</p>
+                <p>Productos totalmente exclusivos</p>
             </div>
+        </div>
+        <div class="carrusel">
+            
         </div>
     </header>
 </body>
