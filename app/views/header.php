@@ -30,7 +30,7 @@
             </nav>
             <nav class="iconos_usuario_carrito">
                 <div class="logo_carrito">
-                    <a href="#">
+                    <a href="/paginaWeb_projecte_ZambranoAlejandro/app/views/login.php  ">
                         <img class="header-carrito-icon" src="/paginaWeb_projecte_ZambranoAlejandro/assets/imagenes/icono_usuario.png"
                             alt="carrito"
                             width="30px"

@@ -1,29 +1,57 @@
 <?php
-require_once dirname(__DIR__) . '/models/ModeloCliente.php';
 
-class ControladorAutenticacion{
-    private $modeloCliente;
-    private $ruta_base_vistas;
+require_once 'app/models/Usuario.php';
 
-    public function __construct(){
-        $this->modeloCliente = new ModeloCliente();
-        $this->ruta_base_vistas = dirname(__DIR__) . '/views';
-        if(session_status() == PHP_SESSION_NONE){
+class Auth {
+    private $db;
+
+    public function __construct($db) {
+        $this->db = $db;
+    }
+
+    public function mostrarLogin() {
+        require_once 'app/views/login.php';
+    }
+
+    public function login() {
+        if (session_status() == PHP_SESSION_NONE) {
             session_start();
         }
-    }
+        
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $email = $_POST['email'] ?? '';
+            $password = $_POST['password'] ?? '';
 
-    public function mostrarLogin(){
-        $view = "login.php";
-        require_once $this->ruta_base_vistas . 'inicio.php';
-    }
+            $usuarioModel = new Usuario($this->db);
+            
+            $usuario = $usuarioModel->autenticar($email, $password);
 
-    public function login(){
-        if(!isset($_POST['email']) || !isset($_POST['password'])){
-            $_SESSION['error_login'] = "Faltan datos de inicio de sesion.";
-            header('Location: index.php?controlador=Autenticacion&accion=mostrarLogin');
-            exit;
+            if ($usuario) {
+                $_SESSION['usuario_logueado'] = $usuario;
+                
+                header("Location: /paginaWeb_projecte_ZambranoAlejandro/index.php");
+                exit();
+            } else {
+                $_SESSION['error_login'] = "Correo o contraseña incorrectos.";
+                header("Location: /paginaWeb_projecte_ZambranoAlejandro/index.php?controlador=Auth&accion=mostrarLogin");
+                exit();
+            }
+        } else {
+            header("Location: /paginaWeb_projecte_ZambranoAlejandro/index.php?controlador=Auth&accion=mostrarLogin");
+            exit();
         }
     }
+
+    public function logout() {
+        if (session_status() == PHP_SESSION_NONE) {
+            session_start();
+        }
+        
+        session_unset();
+        
+        session_destroy();
+        
+        header("Location: /paginaWeb_projecte_ZambranoAlejandro/index.php");
+        exit();
+    }
 }
-?>
