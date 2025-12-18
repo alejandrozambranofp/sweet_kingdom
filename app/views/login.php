@@ -1,3 +1,7 @@
+<?php
+        include 'header.php';
+        include 'footer.php'; 
+?>
 <div class="container my-5" style="max-width: 400px;">
     <h2 class="text-center mb-4">Iniciar Sesión</h2>
     

@@ -1,57 +1,52 @@
 <?php
+session_start();
 
-require_once 'app/models/Usuario.php';
+$DATABASE_HOST = 'localhost';
+$DATABASE_USER = 'root';
+$DATABASE_PASS = '';
+$DATABASE_NAME = 'sweet_kingdom';
 
-class Auth {
-    private $db;
+$conexion = mysqli_connect($DATABASE_HOST, $DATABASE_USER, $DATABASE_PASS, $DATABASE_NAME);
 
-    public function __construct($db) {
-        $this->db = $db;
-    }
+if (mysqli_connect_error()) {
 
-    public function mostrarLogin() {
-        require_once 'app/views/login.php';
-    }
-
-    public function login() {
-        if (session_status() == PHP_SESSION_NONE) {
-            session_start();
-        }
-        
-        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            $email = $_POST['email'] ?? '';
-            $password = $_POST['password'] ?? '';
-
-            $usuarioModel = new Usuario($this->db);
-            
-            $usuario = $usuarioModel->autenticar($email, $password);
-
-            if ($usuario) {
-                $_SESSION['usuario_logueado'] = $usuario;
-                
-                header("Location: /paginaWeb_projecte_ZambranoAlejandro/index.php");
-                exit();
-            } else {
-                $_SESSION['error_login'] = "Correo o contraseña incorrectos.";
-                header("Location: /paginaWeb_projecte_ZambranoAlejandro/index.php?controlador=Auth&accion=mostrarLogin");
-                exit();
-            }
-        } else {
-            header("Location: /paginaWeb_projecte_ZambranoAlejandro/index.php?controlador=Auth&accion=mostrarLogin");
-            exit();
-        }
-    }
-
-    public function logout() {
-        if (session_status() == PHP_SESSION_NONE) {
-            session_start();
-        }
-        
-        session_unset();
-        
-        session_destroy();
-        
-        header("Location: /paginaWeb_projecte_ZambranoAlejandro/index.php");
-        exit();
-    }
+    exit('Fallo en la conexión de MySQL:' . mysqli_connect_error());
 }
+
+
+if (!isset($_POST['username'], $_POST['password'])) {
+
+
+    header('Location: index.html');
+}
+
+
+if ($stmt = $conexion->prepare('SELECT id,password FROM cliente WHERE email = ?')) {
+
+
+    $stmt->bind_param('s', $_POST['email']);
+    $stmt->execute();
+}
+
+
+
+$stmt->store_result();
+if ($stmt->num_rows > 0) {
+    $stmt->bind_result($id, $password);
+    $stmt->fetch();
+
+
+    if ($_POST['password'] === $password) {
+        
+        session_regenerate_id();
+        $_SESSION['loggedin'] = TRUE;
+        $_SESSION['name'] = $_POST['username'];
+        $_SESSION['id'] = $id;
+        header('Location: inicio.php');
+    }
+} else {
+
+    header('Location: index.html');
+}
+
+$stmt->close();
